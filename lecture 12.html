@@ -1,0 +1,68 @@
+	<input type="text" id="name"/>
+	<input type="text" id="age"/>
+	<button id="b" onclick="newUser()">Pyshch</button>
+<div id="content"></div>
+
+<script type="text/javascript">
+Array.prototype.without=function(item){
+	var n=[];
+	for (var i = 0; i < this.length; i++) {
+		if (!equal(this.i, item))
+			n.push(this[i])
+	};
+	return n;
+}
+var users=[];
+
+users.push = function (){
+	alert(arguments)
+    for (var i = 0; i<arguments.length; i++) {
+	addUser(arguments[i]);
+}
+    return Array.prototype.push.apply(this,arguments);
+}
+
+
+function newUser(){
+	var user={name:document.getElementById('name').value,
+	age:document.getElementById('age').value}
+	users.push(user);
+	alert(users);
+}
+
+function BuildUser(data){
+	var b=document.createElement('button');
+	b.innerHTML='delete';
+	b.onclick=function(){deleteUser(data,d)}
+	var d=document.createElement('div');
+	var p1=document.createElement('p');
+	p1.innerHTML=data.name;
+	var p2=document.createElement('p');
+	p2.innerHTML=data.age;
+	d.appendChild(p1);
+	d.appendChild(p2);
+	d.appendChild(b);
+	return d;
+}
+
+function addUser(user){
+	document.getElementById('content').appendChild(BuildUser(user));
+}
+
+function deleteUser (user, node){
+	users=users.without(user);
+	node.parentElement.removeChild(node);
+}
+
+
+function equal(a,b)	{
+	return JSON.stringify(a)==JSON.stringify(b);
+}
+
+
+users.push({name:'Allen', age:'18'});
+users.push({name:'Britt', age:'20'});
+users.push({name:'Cloavan', age:'22'});
+
+
+</script>
